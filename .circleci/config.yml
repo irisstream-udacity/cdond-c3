@@ -204,6 +204,7 @@ jobs:
             yum update -y
             yum install -y tar gzip python3-pip
             pip3 install ansible
+            apk add openssh-client
       - attach_workspace:
           at: ~/
       - run:
