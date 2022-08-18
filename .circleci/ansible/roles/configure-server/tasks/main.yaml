@@ -1,0 +1,21 @@
+- name: update packages
+  become: yes
+  apt:
+    update_cache: yes
+
+- name: Install dependencies
+  become: yes
+  apt:
+    name:
+      - nodejs
+      - npm
+    update_cache: yes
+    state: present
+
+- name: Install pm2
+  become: yes
+  npm:
+    name: pm2
+    version: latest
+    state: present
+    global: yes 
