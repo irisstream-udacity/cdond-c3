@@ -204,12 +204,12 @@ jobs:
             yum update -y
             yum install -y tar gzip python3-pip
             pip3 install ansible
-            cat inventory.txt
       - attach_workspace:
           at: ~/
       - run:
           name: Configure server
           command: |
+            cat .circleci/ansible/inventory.txt
             ansible-playbook -i .circleci/ansible/inventory.txt .circleci/ansible/configure-server.yml
       # Here's where you will add some code to rollback on failure      
       - destroy-environment:
