@@ -262,7 +262,6 @@ jobs:
     steps:
       - checkout
       - run:
-      - run:
           name: Install dependencies
           command: |
             yum update -y
@@ -412,8 +411,8 @@ workflows:
           requires: [configure-infrastructure]
       - deploy-frontend:
           requires: [run-migrations]
-      # - deploy-backend:
-      #     requires: [run-migrations]
+      - deploy-backend:
+          requires: [run-migrations]
       # - smoke-test:
       #     requires: [deploy-backend, deploy-frontend]
       # - cloudfront-update:
