@@ -15,9 +15,9 @@
     path: /home/ubuntu/backend
     state: present
 
-- name: stop default
-  shell: |
-    pm2 stop default
+# - name: stop default
+#   shell: |
+#     pm2 stop default
 
 - name: run server
   shell: |
