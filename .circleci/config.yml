@@ -244,12 +244,12 @@ jobs:
           name: Send migration results to memstash
           command: |
             cat ~/project/backend/migrations_dump.txt
-            if grep -q "has been executed successfully." ~/project/backend/migrations_dump.txt
-            then
+            # if grep -q "has been executed successfully." ~/project/backend/migrations_dump.txt
+            # then
                 curl https://curl.se/ca/cacert.pem -o ~/cacert.pem
                 chmod 400 ~/cacert.pem
                 curl https://kvdb.io/${KVDB_BUCKET_ID}/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d '1' --cacert ~/cacert.pem
-            fi
+            # fi
      # Here's where you will add some code to rollback on failure      
       - destroy-environment:
           frontend-stack-name: "udapeople-frontend-${CIRCLE_WORKFLOW_ID:0:7}"
