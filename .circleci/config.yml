@@ -237,6 +237,7 @@ jobs:
             nvm install 13.8
             nvm use 13.8
             node -v
+            npm -v
       - restore_cache:
           keys: [backend-build]
       - run:
