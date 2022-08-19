@@ -230,7 +230,9 @@ jobs:
           name: install dependencies 
           command: |
             yum -y update
-            yum -y install curl tar gzip nodejs npm
+            yum -y install curl tar gzip
+            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+            nvm use 13.8
             node -v
       - restore_cache:
           keys: [backend-build]
