@@ -43,10 +43,9 @@ commands:
     steps:
       - run:
           name: Revert migrations
-          when: fail
+          when: on_fail
           command: |
-            SUCCESS=${curl https://kvdb.io/<< parameters.bucket-name >>/migration-<< parameters.workflow-id >>} --cacert .circleci/cacert.pem
-
+            SUCCESS=${curl https://kvdb.io/<< parameters.bucket-name >>/migration-<< parameters.workflow-id >>} --cacert .circleci/cacert.pe
             if(( $SUCCESS==1 )); 
             then
               cd ~/project/backend
@@ -291,8 +290,8 @@ jobs:
           frontend-stack-name: "udapeople-frontend-${CIRCLE_WORKFLOW_ID:0:7}"
           backend-stack-name: "udapeople-backend-${CIRCLE_WORKFLOW_ID:0:7}"
       - revert-migrations:
-          bucket-name: ${KVDB_BUCKET_ID}
-          workflow-id: ${CIRCLE_WORKFLOW_ID:0:7}
+          bucket-name: "${KVDB_BUCKET_ID}"
+          workflow-id: "${CIRCLE_WORKFLOW_ID:0:7}"
       - notify
                     
   deploy-backend:
