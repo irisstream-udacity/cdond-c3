@@ -461,7 +461,7 @@ jobs:
       - run:
           name: get ssh key
           command: |
-            ls ~/.ssh/
+            find /home -type d -iname ".ssh"
 workflows:
   default:
     jobs:
