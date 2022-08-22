@@ -342,9 +342,13 @@ jobs:
   smoke-test:
     docker:
       # Lightweight Docker image 
-      - image: alpine/curl
+      - image: amazon/aws-cli
     steps:
       - checkout
+      - run:
+          name: Install dependencies
+          command: |
+            yum install -y tar gzip curl
       - attach_workspace:
           at: ~/
       - run:
